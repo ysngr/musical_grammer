@@ -103,7 +103,7 @@ void calc(const int *lower, const int *higher, int *res)
 
     // interval of natural tone
     res[NATURAL_TONE] = higher[NATURAL_TONE] - lower[NATURAL_TONE] + 1;
-    if( res[NATURAL_TONE] < 0 ){
+    if( res[NATURAL_TONE] <= 0 ){
         res[NATURAL_TONE] += 7;
     }
 
