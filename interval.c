@@ -1,6 +1,7 @@
 /* interval.c */
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 #define True 1
 #define False 0
@@ -34,6 +35,7 @@
 #define M_MAJ_IDX 3
 
 
+void help(const char*);
 void parse(int*, const char*);
 void calc(const int*, const int*, int*);
 int calc_series_natural(const int, const int);
@@ -46,7 +48,10 @@ int main(int argc, char *argv[])
     int lower_tone[2], higher_tone[2];
     int result[2];
 
-    if( argc != 3 ){
+    if( argc == 2 && (strcmp(argv[1], "-h") == 0 || strcmp(argv[1], "--help") == 0) ){
+        help(argv[0]);
+        return -1;
+    }else if( argc != 3 ){
         printf("Invalid arguments.\n");
         return -1;
     }
@@ -57,6 +62,15 @@ int main(int argc, char *argv[])
     print(result);
 
     return 0;
+}
+
+
+void help(const char *program_name)
+{
+    printf("Usage: %s lower-tone[+...|-...] higher-tone[+...|-...]\n", program_name);
+    printf("tone = {C, D, E, F, G, A, H}, sharp = +, flat = -\n");
+
+    return ;
 }
 
 
